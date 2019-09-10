@@ -1,0 +1,5 @@
+.eggs
+build/
+dist/
+option.txt
+setup.py
