@@ -1,5 +1,8 @@
 .eggs
 build/
 dist/
-option.txt
-setup.py
+*setup*
+*.bat
+.vscode
+
+__pycache__

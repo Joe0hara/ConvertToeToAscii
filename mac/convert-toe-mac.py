@@ -8,7 +8,6 @@ import tkinter.filedialog, tkinter.messagebox
 
 root = tkinter.Tk()
 root.withdraw()
-# fTyp = [("","*")]
 iDir = os.path.abspath(os.path.expanduser('~/Desktop'))
 input_file = ""
 input_file = tkinter.filedialog.askopenfilename(filetypes=[('all files', '*'), ('toe to acsii','.toe'), ('ascii to toe', '.toc')], initialdir= iDir)
@@ -16,6 +15,8 @@ input_file = tkinter.filedialog.askopenfilename(filetypes=[('all files', '*'), (
 print("file: ", input_file)
 
 folder = ""
+
+td_path = "/Applications/TouchDesigner099.app/Contents/MacOS/"
 
 if input_file != "":
 
@@ -25,8 +26,8 @@ if input_file != "":
 		folder = folder + "/"
 	name, ext = os.path.splitext(os.path.basename(input_file))
 
-	expand_script = "/Applications/TouchDesigner099.app/Contents/MacOS/toeexpand"
-	collapse_script = "/Applications/TouchDesigner099.app/Contents/MacOS/toecollapse"
+	expand_script = td_path+"toeexpand"
+	collapse_script = td_path+"toecollapse"
 
 	if ext == ".toe":
 		if os.path.exists(folder+"/"+name+".toe.toc"):
@@ -37,6 +38,6 @@ if input_file != "":
 	elif ext == ".toc":
 		subprocess.call([collapse_script, folder+name+ext])
 
-for p in glob.glob(folder+"*bkp*"):
+for p in glob.glob(folder+"*.bkp*"):
 	if os.path.isfile(p):
 		os.remove(p)
